@@ -20,15 +20,15 @@
 #include <stdlib.h>
 #include <dirent.h>
 
-#define CHIP_SN_SIZE 32
+#define CHIP_SN_SIZE 128
 int get_temperature(float *temperature);
-/*  
+/*    
 int main(int argc, char *argv[])
 {
 	float                   temperature;
 	int                     rv;
 	char                    chip_sn[CHIP_SN_SIZE];
-	if(get_temperature(&temperature, chip_sn) < 0)
+	if(get_temperature(&temperature,chip_sn) < 0)
 	{
 		printf("get temperrature failure: %d\n", rv);
 	}
@@ -76,7 +76,6 @@ int get_temperature(float *temperature)
 	strncat(w1_path, chip_sn,sizeof(w1_path)-strlen(w1_path));
 	strncat(w1_path, "/w1_slave", sizeof(w1_path)-strlen(w1_path));
 	//printf("w1_path: %s\n", w1_path);
-	
 
 	if((fd = open(w1_path, O_RDONLY)) < 0)
 	{

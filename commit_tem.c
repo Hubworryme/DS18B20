@@ -40,7 +40,7 @@ int main(int argc,char **argv)
 	int                daemon_run=0;
 	int                opt;
 	int                idx;
-	int                s_time;
+	int                s_time=0;
 	int                port;
 	int                log_fd;
 	int                sock_fd=-1;
@@ -140,14 +140,15 @@ int main(int argc,char **argv)
 
 		get_time_ms(date_time,sizeof(date_time));
 
-		snprintf(buf,sizeof(buf),"%s/%s/%.1f%c",id,date_time,temper,'C');
+		memset(buf,0,sizeof(buf));
+
+		snprintf(buf,sizeof(buf),"%s/%s/%.3f%c",id,date_time,temper,'C');
 
 		if(sock_fd<0)
 		{
 			if((sock_fd=connect_server(port,ser_ip))<0)
 			{
 				printf("try to connect to server again!\n");
-				printf("\n");
 				continue;
 			}
 		}

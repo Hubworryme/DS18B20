@@ -73,3 +73,11 @@ int get_time_ms(char *buff, int len)
 	snprintf (buff, len, "%s.%03ld", time_string, milliseconds);            //输出格式为: 2022-03-30 20:38:37.182
     return 0;
 }
+/*
+int main(char *argc,char **argv)
+{
+	char buff[64];
+	int len=64;
+	get_time_ms(buff,len);
+	printf("%s\n",buff);
+}*/
